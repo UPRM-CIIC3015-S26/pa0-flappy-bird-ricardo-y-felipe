@@ -19,9 +19,9 @@ The project is designed as an introductory programming assignment (PA0). Most of
 - **Email: ricardo.galarza@upr.edu
 
 ### Partner #2
-- **Name:**
-- **Student Number:**
-- **Email:**
+- **Name: Felipe A. Sanchez Rosario
+- **Student Number: 802-23-8115
+- **Email:felipe.sanchez2@upr.edu
 
 ## ⭐ Bonus Features (Optional)
 List and briefly describe any additional features or enhancements implemented beyond the basic requirements.
