@@ -102,7 +102,7 @@ while running:
             score = score + 1
             try:
                 pygame.mixer.init()
-                sound = pygame.mixer.Sound(r"C:\Users\fasr3\OneDrive - University of Puerto Rico\CIIC3015\point.mp3")
+                sound = pygame.mixer.Sound(r"Sounds/point.mp3")
                 sound.play()
                 pygame.time.delay(int(sound.get_length() * 1))
             except  pygame.error as e:
