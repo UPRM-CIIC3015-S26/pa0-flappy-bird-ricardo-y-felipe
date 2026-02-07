@@ -29,7 +29,7 @@ title_y = 150
 instruction_x = 80
 instruction_y = 550
 
-score_x = 200
+score_x = 150
 score_y = 10
 
 # Player Variables -->
@@ -39,7 +39,7 @@ bird_velocity = 0
 # TODO 1: Tweaking the physics
 # Looks like the player is falling too quickly not giving a change to flap it's wing, maybe tweak around with the value of this variable
 gravity = 0.5
-jump = -8
+jump = -8 #Merge conflict was here, jump values were different. We ultimately agreed upon -8.
 # Pipe Variables -->
 pipe_x = 400
 pipe_width = 70
@@ -54,6 +54,7 @@ pipe_height = random.randint(100, 400)
 pipe_speed = 3
 
 score = 0
+high_score = 0
 game_over = False
 game_started = False
 
@@ -63,7 +64,7 @@ running = True
 while running:
     # TODO 6: Changing the name!
     # D'oh! This is not your name isn't. follow the detailed instructions on the PDF to complete this task.
-    name = "Homer Simpson"
+    name = "Ricardo Galarza"
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -100,6 +101,9 @@ while running:
             # logic to accomplish this scoring system.
             score = score + 1
 
+        if score > high_score:
+            high_score = score
+
         if bird_y > 600 or bird_y < 0:
             game_over = True
 
@@ -117,7 +121,7 @@ while running:
     pygame.draw.rect(screen, PLAYER, (bird_x, bird_y, 30, 30)) # Drawing the bird (You don't need to touch this line!)
     pygame.draw.rect(screen, GREEN, (pipe_x, 0, pipe_width, pipe_height))
     pygame.draw.rect(screen, GREEN, (pipe_x, pipe_height + pipe_gap, pipe_width, 600))
-    score_text = small_font.render(str(score), True, WHITE)
+    score_text = small_font.render("Score: " + str(score), True, WHITE)
     screen.blit(score_text, (score_x, score_y))
 
     if game_started == False: # Start UI -->
@@ -128,7 +132,9 @@ while running:
 
     if game_over: # GameOver UI -->
         loss_text = small_font.render("Press Space to restart...", True, WHITE)
+        high_score_text = small_font.render("High score: " + str(high_score), True, WHITE)
         screen.blit(loss_text, (85, 200))
+        screen.blit(high_score_text, (140, 525))
 
     pygame.display.update()
     clock.tick(60)
