@@ -39,7 +39,7 @@ bird_velocity = 0
 # TODO 1: Tweaking the physics
 # Looks like the player is falling too quickly not giving a change to flap it's wing, maybe tweak around with the value of this variable
 gravity = 0.5
-jump = -7
+jump = -8
 # Pipe Variables -->
 pipe_x = 400
 pipe_width = 70
@@ -80,6 +80,7 @@ while running:
                     # It is your job to find why this is happening! (Hint: What variable stores the y coordinates
                     # of the bird)
                     bird_velocity = 0
+                    bird_y = 300
                     pipe_x = 400
                     score = 0
                     game_over = False
@@ -97,7 +98,7 @@ while running:
             # TODO 4: Fixing the scoring
             # When you pass through the pipes the score should be updated to the current score + 1. Implement the
             # logic to accomplish this scoring system.
-            score = 1
+            score = score + 1
 
         if bird_y > 600 or bird_y < 0:
             game_over = True
