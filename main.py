@@ -100,6 +100,13 @@ while running:
             # When you pass through the pipes the score should be updated to the current score + 1. Implement the
             # logic to accomplish this scoring system.
             score = score + 1
+            try:
+                pygame.mixer.init()
+                sound = pygame.mixer.Sound(r"C:\Users\fasr3\OneDrive - University of Puerto Rico\CIIC3015\point.mp3")
+                sound.play()
+                pygame.time.delay(int(sound.get_length() * 1))
+            except  pygame.error as e:
+                print(f"Error playing sound: {e}")
 
         if score > high_score:
             high_score = score
