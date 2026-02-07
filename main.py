@@ -16,7 +16,7 @@ pygame.display.set_caption("Flappy Bird")
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
-PLAYER = (255, 255, 255)
+PLAYER = (255, 200, 0)
 
 # Font Size -->
 big_font = pygame.font.SysFont(None, 80)
@@ -62,7 +62,7 @@ clock = pygame.time.Clock()
 running = True
 while running:
     # TODO 6: Changing the name!
-    # D'oh! This is not your name isn't follow the detailed instructions on the PDF to complete this task.
+    # D'oh! This is not your name isn't. follow the detailed instructions on the PDF to complete this task.
     name = "Homer Simpson"
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
