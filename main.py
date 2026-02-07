@@ -1,5 +1,6 @@
 import pygame, random
 pygame.init()
+pygame.mixer.init()
 '''
 Welcome to PA0 – Flappy Bird! Throughout this code, you are going to find a recreation of a game you have probably
 heard of before. This is an introductory assignment designed to help you familiarize yourself with what you can expect 
@@ -7,6 +8,17 @@ in future PAs. In this PA, you will barely need to code—mostly just tweaking s
 fewer than five lines of new code. It is recommended that you read through the code and the comments explaining 
 some of the game mechanics.
 '''
+#This plays a black microwave sound. It's exactly how God intended.
+def playSoundOnChannel(sound, channel_num, volume=0.5):
+    channel = pygame.mixer.find_channel(True)
+    if channel:
+        channel.set_volume(volume)
+        channel.play(sound)
+    else:
+        print("No free channels found.")
+
+sound1 = pygame.mixer.Sound("Sounds/looperman-l-6765107-0380787-wapow.wav")
+sound2 = pygame.mixer.Sound("Sounds/point.mp3")
 # Set up the screen -->
 screen = pygame.display.set_mode((400, 600))
 pygame.display.set_caption("Flappy Bird")
@@ -84,6 +96,7 @@ while running:
                     bird_y = 300
                     pipe_x = 400
                     score = 0
+                    pipe_speed = 3
                     game_over = False
                     game_started = True
                     pipe_height = random.randint(100, 400)
@@ -92,6 +105,7 @@ while running:
         bird_velocity = bird_velocity + gravity
         bird_y = bird_y + bird_velocity
         pipe_x = pipe_x - pipe_speed
+        playSoundOnChannel(sound1, 0)
 
         if pipe_x < -70:
             pipe_x = 400
@@ -100,13 +114,8 @@ while running:
             # When you pass through the pipes the score should be updated to the current score + 1. Implement the
             # logic to accomplish this scoring system.
             score = score + 1
-            try:
-                pygame.mixer.init()
-                sound = pygame.mixer.Sound(r"Sounds/point.mp3")
-                sound.play()
-                pygame.time.delay(int(sound.get_length() * 1))
-            except  pygame.error as e:
-                print(f"Error playing sound: {e}")
+            pipe_speed = pipe_speed + 0.1 #Game gets a bit faster each point, adding a small layer of difficulty. (Don't underestimate the 0.1)
+            playSoundOnChannel(sound2, 1)
 
         if score > high_score:
             high_score = score
