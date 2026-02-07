@@ -14,7 +14,7 @@ The project is designed as an introductory programming assignment (PA0). Most of
 ## 👥 Team Information
 
 ### Partner #1
-- **Name: Ricardo Galarza 
+- **Name: Ricardo Galarza
 - **Student Number: 802-24-2985
 - **Email: ricardo.galarza@upr.edu
 
